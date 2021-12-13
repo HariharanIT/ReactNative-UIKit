@@ -254,7 +254,7 @@ const RtcConfigure: React.FC<Partial<RtcPropsInterface>> = (props) => {
         await requestCameraAndAudioPermission();
       }
       try {
-        if(rtcProps.geoFencing){
+        if(rtcProps.geoFencing && (Platform.OS === 'android' || Platform.OS === 'ios' )){
             engine.current = await RtcEngine.createWithConfig({
               appId: rtcProps.appId,
               areaCode: AreaCode.GLOB ^ AreaCode.CN,
