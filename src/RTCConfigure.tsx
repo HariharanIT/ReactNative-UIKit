@@ -255,10 +255,10 @@ const RtcConfigure: React.FC<Partial<RtcPropsInterface>> = (props) => {
       }
       try {
         if(rtcProps.geoFencing){
-            engine.current = await RtcEngine.createWithAreaCode(
-              rtcProps.appId,
-              AreaCode.GLOB ^ AreaCode.CN,
-            );
+            engine.current = await RtcEngine.createWithConfig({
+              appId: rtcProps.appId,
+              areaCode: AreaCode.GLOB ^ AreaCode.CN,
+            });
         }else{
           engine.current = await RtcEngine.create(rtcProps.appId);
         }
